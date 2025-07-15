@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Controller - Herelink UDP</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Drone Controller - Herelink UDP</h1>
+            <div class="connection-status">
+                <div class="status-indicator" id="connection-indicator"></div>
+                <span id="connection-text">Disconnected</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="panel-group">
+                <!-- Connection Panel -->
+                <div class="panel">
+                    <h2>Connection Settings</h2>
+                    <div class="form-group">
+                        <label for="udp-port">UDP Port:</label>
+                        <input type="number" id="udp-port" value="14551" min="1024" max="65535">
+                        <button id="connect-btn">Connect</button>
+                        <button id="disconnect-btn" disabled>Disconnect</button>
+                    </div>
+                    <div class="udp-status">
+                        <span id="udp-status-text">UDP Server: Stopped</span>
+                    </div>
+                </div>
+
+                <!-- Mission Parameters Panel -->
+                <div class="panel">
+                    <h2>Mission Parameters</h2>
+                    <div class="form-group">
+                        <label for="latitude">Latitude:</label>
+                        <input type="number" id="latitude" value="34.0173" step="0.000001" placeholder="34.0173">
+                    </div>
+                    <div class="form-group">
+                        <label for="longitude">Longitude:</label>
+                        <input type="number" id="longitude" value="74.7179" step="0.000001" placeholder="74.7179">
+                    </div>
+                    <div class="form-group">
+                        <label for="altitude">Altitude (m):</label>
+                        <input type="number" id="altitude" value="30" min="5" max="400" placeholder="30">
+                    </div>
+                    <div class="form-group">
+                        <label for="wait-time">Wait Time (s):</label>
+                        <input type="number" id="wait-time" value="30" min="5" max="300" placeholder="30">
+                    </div>
+                    <div class="mission-controls">
+                        <button id="start-mission-btn">Start Mission</button>
+                        <button id="stop-mission-btn" disabled>Stop Mission</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-group">
+                <!-- Drone Status Panel -->
+                <div class="panel">
+                    <h2>Drone Status</h2>
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <span class="status-label">Status:</span>
+                            <span class="status-value" id="drone-status">Disconnected</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Mode:</span>
+                            <span class="status-value" id="drone-mode">UNKNOWN</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Armed:</span>
+                            <span class="status-value" id="drone-armed">No</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Altitude:</span>
+                            <span class="status-value" id="drone-altitude">0 m</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Latitude:</span>
+                            <span class="status-value" id="drone-lat">0.000000</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Longitude:</span>
+                            <span class="status-value" id="drone-lon">0.000000</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Battery:</span>
+                            <span class="status-value" id="drone-battery">0%</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Distance to Target:</span>
+                            <span class="status-value" id="distance-target">0 m</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Console Panel -->
+                <div class="panel">
+                    <h2>Console Output</h2>
+                    <div class="console-container">
+                        <div class="console" id="console"></div>
+                        <button id="clear-console">Clear Console</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>

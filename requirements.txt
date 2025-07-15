@@ -1,0 +1,5 @@
+dronekit==2.9.2
+geopy==2.3.0
+pymavlink==2.4.37
+pyserial==3.5
+future==0.18.3
